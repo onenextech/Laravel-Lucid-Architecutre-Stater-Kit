@@ -6,6 +6,7 @@ use App\Helpers\JsonResponder;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
@@ -55,6 +56,10 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $exception)
     {
+        if (!Request::ajax()) {
+            return parent::render($request, $exception);
+        }
+
         $exceptionClass = get_class($exception);
         $message = $exception->getMessage();
 
