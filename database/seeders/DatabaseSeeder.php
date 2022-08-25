@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Psy\Readline\Hoa\Console;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,8 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        if (config('custom.lucid_application_providers')) {
+        if (config('core.lucid_application_providers')) {
             $this->call(ApplicationServiceSeeder::class);
         }
+
+        //User::factory(100)->create();
     }
 }

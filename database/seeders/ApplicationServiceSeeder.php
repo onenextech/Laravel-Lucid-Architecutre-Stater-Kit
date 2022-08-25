@@ -16,8 +16,7 @@ class ApplicationServiceSeeder extends Seeder
     {
         ApplicationService::truncate();
 
-        collect(config('custom.lucid_application_providers'))
-            ->map(fn($provider) => ['provider' => $provider, 'active' => true])
+        collect(config('core.lucid_application_providers'))
             ->pipe(fn ($providers) => ApplicationService::insert($providers->toArray()));
     }
 }

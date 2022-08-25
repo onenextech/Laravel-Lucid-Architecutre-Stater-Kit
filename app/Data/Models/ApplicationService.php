@@ -9,5 +9,5 @@ class ApplicationService extends Model
 {
     use HasFactory;
 
-    public $fillable = ['provider'];
+    public $fillable = ['description', 'active'];
 }

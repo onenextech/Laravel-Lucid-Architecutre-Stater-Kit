@@ -28,17 +28,19 @@ class ApplicationServiceServiceProvider extends ServiceProvider
             realpath(__DIR__ . '/../database/migrations')
         ]);
 
-        ApplicationService::all()
-            ->filter(fn ($provider) => $provider->active)
-            ->pluck('provider')
-            ->each(fn ($provider) => $this->app->register($provider));
+        if (!$this->app->runningInConsole()) {
+            ApplicationService::all()
+                ->filter(fn($provider) => $provider->active)
+                ->pluck('provider')
+                ->each(fn($provider) => $this->app->register($provider));
+        }
     }
 
     /**
-    * Register the ApplicationService service provider.
-    *
-    * @return void
-    */
+     * Register the ApplicationService service provider.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
@@ -57,9 +59,9 @@ class ApplicationServiceServiceProvider extends ServiceProvider
         // Translation must be registered ahead of adding lang namespaces
         $this->app->register(TranslationServiceProvider::class);
 
-        Lang::addNamespace('application_service', realpath(__DIR__.'/../resources/lang'));
+        Lang::addNamespace('application_service', realpath(__DIR__ . '/../resources/lang'));
 
         View::addNamespace('application_service', base_path('resources/views/vendor/application_service'));
-        View::addNamespace('application_service', realpath(__DIR__.'/../resources/views'));
+        View::addNamespace('application_service', realpath(__DIR__ . '/../resources/views'));
     }
 }

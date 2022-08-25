@@ -2,7 +2,6 @@
 
 namespace App\Services\Auth\Http\Controllers;
 
-use App\Domains\Auth\Requests\LoginRequest;
 use App\Services\Auth\Features\LoginFeature;
 use Lucid\Units\Controller;
 

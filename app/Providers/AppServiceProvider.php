@@ -38,10 +38,11 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     private function registerLucidApplicationProviders() {
-        if (config('custom.toggle_app_services')) {
+        if (config('core.toggle_app_services')) {
             $this->app->register(ApplicationServiceServiceProvider::class);
         } else {
-            collect(config('custom.lucid_application_providers'))
+            collect(config('core.lucid_application_providers'))
+                ->map(fn ($provider) => $provider['provider'])
                 ->each(fn ($provider) => $this->app->register($provider));
         }
     }

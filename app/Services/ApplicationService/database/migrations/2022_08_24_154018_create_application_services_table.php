@@ -16,7 +16,11 @@ return new class extends Migration
         Schema::create('application_services', function (Blueprint $table) {
             $table->id();
             $table->string('provider');
-            $table->boolean('active');
+            $table->longText('description')->nullable();
+            $table->boolean('force_required')->default(false)
+                ->comment('Define if a service is required as a core service, if true -> can\'t be turn off');
+            $table->boolean('active')->default(true)
+                ->comment('Define application service should be registered');
             $table->timestamps();
         });
     }

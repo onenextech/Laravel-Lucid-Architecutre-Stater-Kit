@@ -2,9 +2,9 @@
 
 namespace App\Domains\Auth\Jobs;
 
-use App\Helpers\JsonResponder;
+use App\Exceptions\UnauthorizedException;
 use App\Models\User;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Lucid\Units\Job;
 
 class LoginJob extends Job
@@ -23,19 +23,24 @@ class LoginJob extends Job
     /**
      * Execute the job.
      *
-     * @return void
+     * @return array
+     * @throws UnauthorizedException
      */
     public function handle()
     {
         try {
             $user = User::where('email', $this->email)->firstOrFail();
-            if (\Hash::check($this->password, $user->password)) {
-                \Auth::login($user);
-                return \Auth::user();
-            }
-        } catch (\Exception $_) {
-            return JsonResponder::unauthorized('Credentials are not correct', 401);
+        } catch (ModelNotFoundException $exception) {
+            throw new UnauthorizedException('Wrong Credentials');
         }
 
+        if (\Hash::check($this->password, $user->password)) {
+            return  [
+                'access_token' => $user->createToken('Authentication Token')->accessToken,
+                'user' => $user
+            ];
+        } else {
+            throw new UnauthorizedException('Wrong Credentials');
+        }
     }
 }
