@@ -30,7 +30,7 @@ class UpdateApplicationServiceJob extends Job
     public function handle()
     {
         $applicationService = ApplicationService::findOrFail($this->applicationServiceId);
-        if ($applicationService->force_required && $this->payload['active'] === 0) {
+        if ($applicationService->force_required && $this->payload['active'] == 0) {
             throw ValidationException::withMessages([
                 'id' => 'The application service of this id is force required as a core service'
             ]);

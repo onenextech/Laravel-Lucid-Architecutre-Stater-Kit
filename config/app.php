@@ -195,6 +195,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Custom provider to override default laravel passport provider
+        \App\Providers\PassportServiceProvider::class
+
     ],
 
     /*
