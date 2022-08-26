@@ -18,6 +18,11 @@ class DatabaseSeeder extends Seeder
             $this->call(ApplicationServiceSeeder::class);
         }
 
+        $this->call([
+            PermissionSeeder::class,
+            SuperAdminSeeder::class
+        ]);
+
         //User::factory(100)->create();
     }
 }

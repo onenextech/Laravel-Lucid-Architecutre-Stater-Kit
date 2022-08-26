@@ -37,3 +37,6 @@ And you may need to re-run [App\Database\Seeders\ApplicationServiceSeeder](./dat
 #####Passport
 Laravel passport doesn't allow as to disable its oauth routes by default, and I had to disable it by override its provider with [App\Providers\PassportServiceProvider](./app/Providers/PassportServiceProvider.php)
 However, please feel free to toggle the registration of the passport oauth routes in above provider.
+
+
+

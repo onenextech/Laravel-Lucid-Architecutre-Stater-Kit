@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Exceptions\UnauthorizedException as PermissionAuthorizedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -72,6 +73,7 @@ class Handler extends ExceptionHandler
                 return JsonResponder::notFound('The resource is not found');
 
             case UnauthorizedException::class:
+            case PermissionAuthorizedException::class:
                 return JsonResponder::unauthorized($message);
 
             case ValidationException::class:
@@ -81,6 +83,7 @@ class Handler extends ExceptionHandler
                 return JsonResponder::unauthorized('Unauthenticated');
 
             default:
+                info($exception);
                 return JsonResponder::internalServerError();
         }
     }
