@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Services\ApplicationService\Providers\ApplicationServiceServiceProvider;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Passport\Passport;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerLucidApplicationProviders();
-        $this->configurePassport();
+        //$this->configurePassport();
+        $this->configureDevelopmentPackages();
     }
 
     /**
@@ -39,6 +39,15 @@ class AppServiceProvider extends ServiceProvider
                 ->each(fn($provider) => $this->app->register($provider));
         }
     }
+
+    private function configureDevelopmentPackages()
+    {
+        if ($this->app->environment('local')) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+        }
+    }
+
 
     private function configurePassport()
     {
