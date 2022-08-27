@@ -40,7 +40,13 @@ If you feel application services are not registered as expected, please run
 php artisan cache:clear
 ```
 
+###API DOCUMENTATION
 
+We use the Scribe to generate the API documentation. So, please do visit [Scribe documentation](https://scribe.knuckles.wtf/laravel) website to see the documentation and follow the instructions.
+
+```shell
+php artisan scribe:generate     
+```
 
 ###NOTES
 
