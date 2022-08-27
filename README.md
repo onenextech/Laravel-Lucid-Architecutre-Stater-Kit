@@ -40,7 +40,7 @@ If you feel application services are not registered as expected, please run
 php artisan cache:clear
 ```
 
-###API DOCUMENTATION
+### API DOCUMENTATION
 
 We use the Scribe to generate the API documentation. So, please do visit [Scribe documentation](https://scribe.knuckles.wtf/laravel) website to see the documentation and follow the instructions.
 
@@ -48,9 +48,9 @@ We use the Scribe to generate the API documentation. So, please do visit [Scribe
 php artisan scribe:generate     
 ```
 
-###NOTES
+### NOTES
 
-#####Passport
+##### Passport
 Laravel passport doesn't allow as to disable its oauth routes by default, and I had to disable it by overriding its provider with [App\Providers\PassportServiceProvider](./app/Providers/PassportServiceProvider.php)
 However, please feel free to toggle the registration of the passport oauth routes in above provider.
 
