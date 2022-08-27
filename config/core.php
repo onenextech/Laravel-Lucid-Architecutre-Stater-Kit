@@ -42,6 +42,9 @@ return [
     'permissions' => [
         'index-application-services',
         'show-application-service',
-        'update-application-service'
+        'update-application-service',
+
+        'manage-roles',
+        'manage-permissions'
     ]
 ];
