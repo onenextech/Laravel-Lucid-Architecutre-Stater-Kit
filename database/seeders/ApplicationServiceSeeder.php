@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Data\Models\ApplicationService;
+use App\Domains\ApplicationService\Jobs\RenewApplicationServiceInCacheJob;
 use Illuminate\Database\Seeder;
 
 class ApplicationServiceSeeder extends Seeder
@@ -17,6 +18,9 @@ class ApplicationServiceSeeder extends Seeder
         ApplicationService::truncate();
 
         collect(config('core.lucid_application_providers'))
-            ->pipe(fn ($providers) => ApplicationService::insert($providers->toArray()));
+            ->pipeThrough([
+                fn($providers) => ApplicationService::insert($providers->toArray()),
+                fn($_) => dispatch_sync(new RenewApplicationServiceInCacheJob())
+            ]);
     }
 }

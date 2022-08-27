@@ -3,6 +3,7 @@
 namespace App\Services\ApplicationService\Providers;
 
 use App\Data\Models\ApplicationService;
+use App\Domains\ApplicationService\Jobs\RememberApplicationServiceJob;
 use App\Exceptions\UnableToRegisterLucidServicesFromDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
@@ -32,7 +33,7 @@ class ApplicationServiceServiceProvider extends ServiceProvider
 
         try {
             if (DB::getSchemaBuilder()->hasTable('application_services')) {
-                ApplicationService::all()
+                dispatch_sync(new RememberApplicationServiceJob()  )
                     ->filter(fn($provider) => $provider->active)
                     ->pluck('provider')
                     ->each(fn($provider) => $this->app->register($provider));
