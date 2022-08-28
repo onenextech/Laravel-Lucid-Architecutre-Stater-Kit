@@ -35,4 +35,8 @@ class JsonResponder
     public static function notFound($message = 'Not Found') {
         return self::respond($message, 404);
     }
+
+    public static function noContent($message = 'No Content') {
+        return self::respond($message, 204);
+    }
 }
