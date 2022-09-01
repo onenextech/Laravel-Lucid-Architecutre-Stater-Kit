@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             PermissionSeeder::class,
-            SuperAdminSeeder::class
+            SuperAdminSeeder::class,
         ]);
 
         //User::factory(100)->create();

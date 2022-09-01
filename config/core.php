@@ -12,7 +12,6 @@ return [
      */
     'toggle_app_services' => env('TOGGLE_APP_SERVICES', true),
 
-
     /**
      * Define your service of lucid application here and re-run the Database\Seeders\ApplicationServiceSeeder
      */
@@ -21,19 +20,19 @@ return [
             'provider' => \App\Services\Auth\Providers\AuthServiceProvider::class,
             'description' => 'Application Core Authentication Service',
             'force_required' => true,
-            'active' => true
+            'active' => true,
         ],
         [
             'provider' => \App\Services\Authorization\Providers\AuthorizationServiceProvider::class,
             'description' => 'Application Core Authorization Service',
             'force_required' => true,
-            'active' => true
+            'active' => true,
         ],
 
     ],
 
     'roles' => [
-        'super-admin'
+        'super-admin',
     ],
 
     // format - action-resource(s/es)
@@ -45,6 +44,6 @@ return [
         'update-application-service',
 
         'manage-roles',
-        'manage-permissions'
-    ]
+        'manage-permissions',
+    ],
 ];

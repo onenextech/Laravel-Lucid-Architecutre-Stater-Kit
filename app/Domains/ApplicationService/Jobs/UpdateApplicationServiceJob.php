@@ -9,6 +9,7 @@ use Lucid\Units\Job;
 class UpdateApplicationServiceJob extends Job
 {
     private string $applicationServiceId;
+
     private array $payload;
 
     /**
@@ -32,7 +33,7 @@ class UpdateApplicationServiceJob extends Job
         $applicationService = ApplicationService::findOrFail($this->applicationServiceId);
         if ($applicationService->force_required && $this->payload['active'] == 0) {
             throw ValidationException::withMessages([
-                'id' => 'The application service of this id is force required as a core service'
+                'id' => 'The application service of this id is force required as a core service',
             ]);
         }
         $applicationService->update($this->payload);

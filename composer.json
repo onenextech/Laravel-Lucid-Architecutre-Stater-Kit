@@ -18,7 +18,6 @@
         "fakerphp/faker": "^1.9.1",
         "knuckleswtf/scribe": "^3.36",
         "laravel/pint": "^1.0",
-        "laravel/sail": "^1.0.1",
         "laravel/telescope": "^4.9",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",

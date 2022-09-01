@@ -28,18 +28,18 @@ class ApplicationServiceServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom([
-            realpath(__DIR__ . '/../database/migrations')
+            realpath(__DIR__.'/../database/migrations'),
         ]);
 
         try {
             if (DB::getSchemaBuilder()->hasTable('application_services')) {
-                dispatch_sync(new RememberApplicationServiceJob()  )
-                    ->filter(fn($provider) => $provider->active)
+                dispatch_sync(new RememberApplicationServiceJob())
+                    ->filter(fn ($provider) => $provider->active)
                     ->pluck('provider')
-                    ->each(fn($provider) => $this->app->register($provider));
+                    ->each(fn ($provider) => $this->app->register($provider));
             } else {
                 // Table does not exist
-                if (!$this->app->runningInConsole()) {
+                if (! $this->app->runningInConsole()) {
                     throw new UnableToRegisterLucidServicesFromDatabase('Toggle Lucid Service config is turned on, but the application_services table does not exist');
                 }
             }
@@ -77,9 +77,9 @@ class ApplicationServiceServiceProvider extends ServiceProvider
         // Translation must be registered ahead of adding lang namespaces
         $this->app->register(TranslationServiceProvider::class);
 
-        Lang::addNamespace('application_service', realpath(__DIR__ . '/../resources/lang'));
+        Lang::addNamespace('application_service', realpath(__DIR__.'/../resources/lang'));
 
         View::addNamespace('application_service', base_path('resources/views/vendor/application_service'));
-        View::addNamespace('application_service', realpath(__DIR__ . '/../resources/views'));
+        View::addNamespace('application_service', realpath(__DIR__.'/../resources/views'));
     }
 }

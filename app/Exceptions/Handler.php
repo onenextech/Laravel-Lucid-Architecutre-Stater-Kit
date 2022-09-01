@@ -29,7 +29,7 @@ class Handler extends ExceptionHandler
      * @var array<int, class-string<\Throwable>>
      */
     protected $dontReport = [
-        UnauthorizedException::class
+        UnauthorizedException::class,
     ];
 
     /**
@@ -51,19 +51,17 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $throwable) {
-
         });
     }
 
     public function render($request, Throwable $exception)
     {
-        if (!Request::ajax()) {
+        if (! Request::ajax()) {
             return parent::render($request, $exception);
         }
 
         $exceptionClass = get_class($exception);
         $message = $exception->getMessage();
-
 
         switch ($exceptionClass) {
             case NotFoundHttpException::class:
@@ -84,6 +82,7 @@ class Handler extends ExceptionHandler
 
             default:
                 info($exception);
+
                 return JsonResponder::internalServerError();
         }
     }

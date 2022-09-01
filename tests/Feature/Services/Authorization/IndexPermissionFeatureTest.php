@@ -3,7 +3,6 @@
 namespace Tests\Feature\Services\Authorization;
 
 use Tests\TestCase;
-use App\Services\Authorization\Features\IndexPermissionFeature;
 
 class IndexPermissionFeatureTest extends TestCase
 {

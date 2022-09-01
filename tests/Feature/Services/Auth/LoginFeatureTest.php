@@ -3,7 +3,6 @@
 namespace Tests\Feature\Services\Auth;
 
 use Tests\TestCase;
-use App\Services\Auth\Features\LoginFeature;
 
 class LoginFeatureTest extends TestCase
 {

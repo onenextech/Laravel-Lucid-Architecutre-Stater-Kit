@@ -26,7 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 
     private function registerLucidApplicationProviders()
@@ -35,8 +34,8 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(ApplicationServiceServiceProvider::class);
         } else {
             collect(config('core.lucid_application_providers'))
-                ->map(fn($provider) => $provider['provider'])
-                ->each(fn($provider) => $this->app->register($provider));
+                ->map(fn ($provider) => $provider['provider'])
+                ->each(fn ($provider) => $this->app->register($provider));
         }
     }
 
@@ -47,7 +46,6 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(TelescopeServiceProvider::class);
         }
     }
-
 
     private function configurePassport()
     {

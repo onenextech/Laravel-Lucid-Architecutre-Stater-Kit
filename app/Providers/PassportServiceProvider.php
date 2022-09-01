@@ -4,7 +4,6 @@ namespace App\Providers;
 
 class PassportServiceProvider extends \Laravel\Passport\PassportServiceProvider
 {
-
     /*
      * Laravel Passport doesn't allow us to disable it's oauth route
      * This provider is to override its default nature

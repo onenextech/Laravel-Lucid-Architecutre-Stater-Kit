@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 trait UUID
 {
-   /**
+    /**
      * Boot function from Laravel.
      */
     protected static function boot()
@@ -19,7 +19,7 @@ trait UUID
         });
     }
 
-   /**
+    /**
      * Get the value indicating whether the IDs are incrementing.
      *
      * @return bool
@@ -29,7 +29,7 @@ trait UUID
         return false;
     }
 
-   /**
+    /**
      * Get the auto-incrementing key type.
      *
      * @return string

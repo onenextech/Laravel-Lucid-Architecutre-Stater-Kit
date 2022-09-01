@@ -10,7 +10,8 @@ class IndexApplicationServiceFeature extends Feature
 {
     public function handle()
     {
-        $applicationServices =  $this->run(IndexApplicationServiceJob::class);
+        $applicationServices = $this->run(IndexApplicationServiceJob::class);
+
         return JsonResponder::success('Application Services have been successfully retrieved', $applicationServices);
     }
 }

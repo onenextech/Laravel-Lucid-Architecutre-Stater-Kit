@@ -197,7 +197,7 @@ return [
         App\Providers\TelescopeServiceProvider::class,
 
         // Custom provider to override default laravel passport provider
-        \App\Providers\PassportServiceProvider::class
+        \App\Providers\PassportServiceProvider::class,
 
     ],
 

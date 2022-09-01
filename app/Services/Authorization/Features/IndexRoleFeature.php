@@ -12,6 +12,7 @@ class IndexRoleFeature extends Feature
     public function handle(Request $request)
     {
         $roles = $this->run(IndexRoleJob::class);
+
         return JsonResponder::success('Roles has been retrieved successfully', $roles);
     }
 }

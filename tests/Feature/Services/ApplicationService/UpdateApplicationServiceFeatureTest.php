@@ -3,7 +3,6 @@
 namespace Tests\Feature\Services\ApplicationService;
 
 use Tests\TestCase;
-use App\Services\ApplicationService\Features\UpdateApplicationServiceFeature;
 
 class UpdateApplicationServiceFeatureTest extends TestCase
 {

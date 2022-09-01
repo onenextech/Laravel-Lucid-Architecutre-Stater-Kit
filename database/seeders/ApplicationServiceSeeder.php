@@ -19,8 +19,8 @@ class ApplicationServiceSeeder extends Seeder
 
         collect(config('core.lucid_application_providers'))
             ->pipeThrough([
-                fn($providers) => ApplicationService::insert($providers->toArray()),
-                fn($_) => dispatch_sync(new RenewApplicationServiceInCacheJob())
+                fn ($providers) => ApplicationService::insert($providers->toArray()),
+                fn ($_) => dispatch_sync(new RenewApplicationServiceInCacheJob()),
             ]);
     }
 }

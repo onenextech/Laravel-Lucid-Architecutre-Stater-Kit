@@ -3,7 +3,6 @@
 namespace Tests\Unit\Domains\ApplicationService\Jobs;
 
 use Tests\TestCase;
-use App\Domains\ApplicationService\Jobs\RenewApplicationServiceInCacheJob;
 
 class RenewApplicationServiceInCacheJobTest extends TestCase
 {

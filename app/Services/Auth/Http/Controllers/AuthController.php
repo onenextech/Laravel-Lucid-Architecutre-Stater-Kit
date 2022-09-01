@@ -9,13 +9,15 @@ class AuthController extends Controller
 {
     /**
      * Login
+     *
      * @group Api Auth
      * @unauthenticated
-     * 
+     *
      * @bodyParam email string required The email of the user.
      * @bodyParam password string required The password of the user.
      */
-    public function login() {
+    public function login()
+    {
         return $this->serve(LoginFeature::class);
     }
 }

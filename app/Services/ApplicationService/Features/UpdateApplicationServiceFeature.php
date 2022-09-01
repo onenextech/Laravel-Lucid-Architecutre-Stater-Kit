@@ -26,6 +26,7 @@ class UpdateApplicationServiceFeature extends Feature
         $this->run(RenewApplicationServiceInCacheJob::class);
 
         $applicationService = $this->run(ShowApplicationServiceJob::class, ['applicationServiceId' => $this->applicationServiceId]);
+
         return JsonResponder::success('Application Service has been updated successfully', $applicationService);
     }
 }

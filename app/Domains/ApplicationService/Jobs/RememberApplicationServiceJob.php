@@ -26,6 +26,6 @@ class RememberApplicationServiceJob extends Job
     public function handle()
     {
         return Cache::rememberForever('application_services',
-            fn() => ApplicationService::all()->sortByDesc('active'));
+            fn () => ApplicationService::all()->sortByDesc('active'));
     }
 }

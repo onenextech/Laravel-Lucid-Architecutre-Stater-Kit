@@ -3,7 +3,6 @@
 namespace Tests\Feature\Services\ApplicationService;
 
 use Tests\TestCase;
-use App\Services\ApplicationService\Features\IndexApplicationServiceFeature;
 
 class IndexApplicationServiceFeatureTest extends TestCase
 {

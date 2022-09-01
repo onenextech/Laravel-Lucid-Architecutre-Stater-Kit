@@ -7,7 +7,6 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-
 class SuperAdminSeeder extends Seeder
 {
     /**

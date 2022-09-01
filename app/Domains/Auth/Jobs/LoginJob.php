@@ -24,6 +24,7 @@ class LoginJob extends Job
      * Execute the job.
      *
      * @return array
+     *
      * @throws UnauthorizedException
      */
     public function handle()
@@ -37,7 +38,7 @@ class LoginJob extends Job
         if (\Hash::check($this->password, $user->password)) {
             return [
                 'access_token' => $user->createToken('Authentication Token')->accessToken,
-                'user' => $user->makeHidden(['permissions', 'roles'])->append(['allowed_permissions'])
+                'user' => $user->makeHidden(['permissions', 'roles'])->append(['allowed_permissions']),
             ];
         } else {
             throw new UnauthorizedException('Wrong Credentials');

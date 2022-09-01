@@ -7,7 +7,7 @@ use JetBrains\PhpStorm\ArrayShape;
 
 class StringHelper
 {
-    #[ArrayShape(['name' => "mixed", 'action' => "mixed", 'resource' => "mixed"])]
+    #[ArrayShape(['name' => 'mixed', 'action' => 'mixed', 'resource' => 'mixed'])]
     public static function extractPermissionName($permission, $divider = '-'): array
     {
         return [

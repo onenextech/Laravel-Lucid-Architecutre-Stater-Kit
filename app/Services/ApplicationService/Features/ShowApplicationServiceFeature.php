@@ -18,6 +18,7 @@ class ShowApplicationServiceFeature extends Feature
     public function handle()
     {
         $applicationService = $this->run(ShowApplicationServiceJob::class, ['applicationServiceId' => $this->applicationServiceId]);
+
         return JsonResponder::success('Application Service has been retrieved successfully', $applicationService);
     }
 }

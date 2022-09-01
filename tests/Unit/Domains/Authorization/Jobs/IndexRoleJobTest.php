@@ -3,7 +3,6 @@
 namespace Tests\Unit\Domains\Authorization\Jobs;
 
 use Tests\TestCase;
-use App\Domains\Authorization\Jobs\IndexRoleJob;
 
 class IndexRoleJobTest extends TestCase
 {

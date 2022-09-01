@@ -9,10 +9,11 @@ class PermissionController extends Controller
 {
     /**
      * Index Authorization Permissions
+     *
      * @group Authorization
-     * 
      */
-    public function index(){
+    public function index()
+    {
         return $this->serve(IndexPermissionFeature::class);
     }
 }

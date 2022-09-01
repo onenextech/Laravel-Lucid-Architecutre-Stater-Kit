@@ -1,9 +1,5 @@
 <?php
 
-use App\Services\ApplicationService\Http\Controllers\ApplicationServiceController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes

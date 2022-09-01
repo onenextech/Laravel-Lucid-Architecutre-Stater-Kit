@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use JetBrains\PhpStorm\ArrayShape;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
@@ -53,7 +51,7 @@ class User extends Authenticatable
     protected function allowedPermissions(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->getAllPermissions()->map(fn($permission) => StringHelper::extractPermissionName($permission->name))
+            get: fn () => $this->getAllPermissions()->map(fn ($permission) => StringHelper::extractPermissionName($permission->name))
         );
     }
 

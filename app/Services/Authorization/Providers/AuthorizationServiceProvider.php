@@ -24,15 +24,15 @@ class AuthorizationServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom([
-            realpath(__DIR__ . '/../database/migrations')
+            realpath(__DIR__.'/../database/migrations'),
         ]);
     }
 
     /**
-    * Register the Authorization service provider.
-    *
-    * @return void
-    */
+     * Register the Authorization service provider.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);

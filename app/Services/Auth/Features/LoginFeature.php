@@ -12,6 +12,7 @@ class LoginFeature extends Feature
     public function handle(LoginRequest $request)
     {
         $response = $this->run(LoginJob::class, ['email' => $request->email, 'password' => $request->password]);
+
         return JsonResponder::success('Logged in successfully', $response);
     }
 }
