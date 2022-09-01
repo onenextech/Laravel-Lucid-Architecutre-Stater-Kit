@@ -24,6 +24,19 @@ php artisan db:seed --class=ApplicationServiceSeeder
 php artisan passport:install
 ```
 
+To make it permanent, add it to your` shell profile (~/.bash_profile, ~/.bashrc, ~/.zshrc) and you will be able to simply call lucid from the application’s root directory.
+
+```shell
+export PATH="./vendor/bin:$PATH"
+```
+
+#####Linting
+
+```shell
+pint
+```
+
+
 ### IMPORTANT
 - You will need to register your every service of you lucid app with your desired configurations to the lucid_application_providers array of the following config.
 [config/core.php](./config/core.php).
