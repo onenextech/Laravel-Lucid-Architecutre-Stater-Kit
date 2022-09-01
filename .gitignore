@@ -2,6 +2,8 @@
 /public/build
 /public/hot
 /public/storage
+/public/api-docs
+/public/vendor/scribe
 /storage/*.key
 /vendor
 .env

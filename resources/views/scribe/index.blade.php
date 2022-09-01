@@ -8,8 +8,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./css/theme-default.style.css" media="screen">
-    <link rel="stylesheet" href="./css/theme-default.print.css" media="print">
+    <link rel="stylesheet" href="{{ asset("/vendor/scribe/css/theme-default.style.css") }}" media="screen">
+    <link rel="stylesheet" href="{{ asset("/vendor/scribe/css/theme-default.print.css") }}" media="print">
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 
@@ -26,13 +26,13 @@
             </style>
 
     <script>
-        var baseUrl = "https://lucid.test";
+        var baseUrl = "http://lucid-starter.test";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
-    <script src="./js/tryitout-3.36.0.js"></script>
+    <script src="{{ asset("/vendor/scribe/js/tryitout-3.36.0.js") }}"></script>
 
-    <script src="./js/theme-default-3.36.0.js"></script>
+    <script src="{{ asset("/vendor/scribe/js/theme-default-3.36.0.js") }}"></script>
 
 </head>
 
@@ -41,7 +41,7 @@
 <a href="#" id="nav-button">
     <span>
         MENU
-        <img src="./images/navbar.png" alt="navbar-image" />
+        <img src="{{ asset("/vendor/scribe/images/navbar.png") }}" alt="navbar-image" />
     </span>
 </a>
 <div class="tocify-wrapper">
@@ -113,12 +113,12 @@
             </div>
 
             <ul class="toc-footer" id="toc-footer">
-                            <li><a href="./collection.json">View Postman collection</a></li>
-                            <li><a href="./openapi.yaml">View OpenAPI spec</a></li>
+                            <li><a href="{{ route("scribe.postman") }}">View Postman collection</a></li>
+                            <li><a href="{{ route("scribe.openapi") }}">View OpenAPI spec</a></li>
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 27 2022</li>
+        <li>Last updated: September 1 2022</li>
     </ul>
 </div>
 
@@ -132,10 +132,10 @@ You can switch the language used with the tabs at the top right (or from the nav
 <blockquote>
 <p>Base URL</p>
 </blockquote>
-<pre><code class="language-yaml">https://lucid.test</code></pre>
+<pre><code class="language-yaml">http://lucid-starter.test</code></pre>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
-<p>Authenticate requests to this API's endpoints by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can retrieve your token by using <a href="#auth-POSTapi-auth-login">Api Auth / Login</a> API.</p>
 
@@ -156,19 +156,19 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://lucid.test/api/auth/login" \
+    "http://lucid-starter.test/api/auth/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"eos\",
-    \"password\": \"neque\"
+    \"email\": \"cupiditate\",
+    \"password\": \"quae\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://lucid.test/api/auth/login"
+    "http://lucid-starter.test/api/auth/login"
 );
 
 const headers = {
@@ -177,8 +177,8 @@ const headers = {
 };
 
 let body = {
-    "email": "eos",
-    "password": "neque"
+    "email": "cupiditate",
+    "password": "quae"
 };
 
 fetch(url, {
@@ -236,7 +236,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-login"
-               value="eos"
+               value="cupiditate"
                data-component="body" hidden>
     <br>
 <p>The email of the user.</p>
@@ -246,7 +246,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-login"
-               value="neque"
+               value="quae"
                data-component="body" hidden>
     <br>
 <p>The password of the user.</p>
@@ -271,7 +271,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://lucid.test/api/application_services" \
+    --get "http://lucid-starter.test/api/application_services" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -279,7 +279,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://lucid.test/api/application_services"
+    "http://lucid-starter.test/api/application_services"
 );
 
 const headers = {
@@ -314,410 +314,410 @@ access-control-allow-origin: *
 <code class="language-json">{
     &quot;message&quot;: &quot;User is not logged in.&quot;,
     &quot;exception&quot;: &quot;Spatie\\Permission\\Exceptions\\UnauthorizedException&quot;,
-    &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/spatie/laravel-permission/src/Exceptions/UnauthorizedException.php&quot;,
+    &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/spatie/laravel-permission/src/Exceptions/UnauthorizedException.php&quot;,
     &quot;line&quot;: 60,
     &quot;trace&quot;: [
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/spatie/laravel-permission/src/Middlewares/RoleMiddleware.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/spatie/laravel-permission/src/Middlewares/RoleMiddleware.php&quot;,
             &quot;line&quot;: 16,
             &quot;function&quot;: &quot;notLoggedIn&quot;,
             &quot;class&quot;: &quot;Spatie\\Permission\\Exceptions\\UnauthorizedException&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Spatie\\Permission\\Middlewares\\RoleMiddleware&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
             &quot;line&quot;: 50,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\SubstituteBindings&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 126,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 102,
             &quot;function&quot;: &quot;handleRequest&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 54,
             &quot;function&quot;: &quot;handleRequestUsingNamedLimiter&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 726,
             &quot;function&quot;: &quot;then&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 703,
             &quot;function&quot;: &quot;runRouteWithinStack&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 667,
             &quot;function&quot;: &quot;runRoute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 656,
             &quot;function&quot;: &quot;dispatchToRoute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 167,
             &quot;function&quot;: &quot;dispatch&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 141,
             &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
             &quot;line&quot;: 21,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
             &quot;line&quot;: 31,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
             &quot;line&quot;: 21,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
             &quot;line&quot;: 40,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
             &quot;line&quot;: 27,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
             &quot;line&quot;: 86,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
             &quot;line&quot;: 62,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
             &quot;line&quot;: 39,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 142,
             &quot;function&quot;: &quot;then&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 111,
             &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 299,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 287,
             &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 89,
             &quot;function&quot;: &quot;makeApiCall&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 45,
             &quot;function&quot;: &quot;makeResponseCall&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 35,
             &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 222,
             &quot;function&quot;: &quot;__invoke&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 179,
             &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;fetchResponses&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 123,
             &quot;function&quot;: &quot;processRoute&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 80,
             &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 56,
             &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
             &quot;line&quot;: 55,
             &quot;function&quot;: &quot;get&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 36,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
             &quot;line&quot;: 41,
             &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 93,
             &quot;function&quot;: &quot;unwrapIfClosure&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 37,
             &quot;function&quot;: &quot;callBoundMethod&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
             &quot;line&quot;: 651,
             &quot;function&quot;: &quot;call&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
             &quot;line&quot;: 139,
             &quot;function&quot;: &quot;call&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Command/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Command/Command.php&quot;,
             &quot;line&quot;: 308,
             &quot;function&quot;: &quot;execute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
             &quot;line&quot;: 124,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 1002,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 299,
             &quot;function&quot;: &quot;doRunCommand&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 171,
             &quot;function&quot;: &quot;doRun&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
             &quot;line&quot;: 102,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
             &quot;line&quot;: 129,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/artisan&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/artisan&quot;,
             &quot;line&quot;: 37,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
@@ -790,7 +790,7 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://lucid.test/api/application_services/ut" \
+    --get "http://lucid-starter.test/api/application_services/in" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -798,7 +798,7 @@ access-control-allow-origin: *
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://lucid.test/api/application_services/ut"
+    "http://lucid-starter.test/api/application_services/in"
 );
 
 const headers = {
@@ -833,410 +833,410 @@ access-control-allow-origin: *
 <code class="language-json">{
     &quot;message&quot;: &quot;User is not logged in.&quot;,
     &quot;exception&quot;: &quot;Spatie\\Permission\\Exceptions\\UnauthorizedException&quot;,
-    &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/spatie/laravel-permission/src/Exceptions/UnauthorizedException.php&quot;,
+    &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/spatie/laravel-permission/src/Exceptions/UnauthorizedException.php&quot;,
     &quot;line&quot;: 60,
     &quot;trace&quot;: [
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/spatie/laravel-permission/src/Middlewares/RoleMiddleware.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/spatie/laravel-permission/src/Middlewares/RoleMiddleware.php&quot;,
             &quot;line&quot;: 16,
             &quot;function&quot;: &quot;notLoggedIn&quot;,
             &quot;class&quot;: &quot;Spatie\\Permission\\Exceptions\\UnauthorizedException&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Spatie\\Permission\\Middlewares\\RoleMiddleware&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
             &quot;line&quot;: 50,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\SubstituteBindings&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 126,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 102,
             &quot;function&quot;: &quot;handleRequest&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 54,
             &quot;function&quot;: &quot;handleRequestUsingNamedLimiter&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 726,
             &quot;function&quot;: &quot;then&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 703,
             &quot;function&quot;: &quot;runRouteWithinStack&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 667,
             &quot;function&quot;: &quot;runRoute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 656,
             &quot;function&quot;: &quot;dispatchToRoute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 167,
             &quot;function&quot;: &quot;dispatch&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 141,
             &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
             &quot;line&quot;: 21,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
             &quot;line&quot;: 31,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
             &quot;line&quot;: 21,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
             &quot;line&quot;: 40,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
             &quot;line&quot;: 27,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
             &quot;line&quot;: 86,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
             &quot;line&quot;: 62,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
             &quot;line&quot;: 39,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 142,
             &quot;function&quot;: &quot;then&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 111,
             &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 299,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 287,
             &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 89,
             &quot;function&quot;: &quot;makeApiCall&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 45,
             &quot;function&quot;: &quot;makeResponseCall&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 35,
             &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 222,
             &quot;function&quot;: &quot;__invoke&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 179,
             &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;fetchResponses&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 123,
             &quot;function&quot;: &quot;processRoute&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 80,
             &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 56,
             &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
             &quot;line&quot;: 55,
             &quot;function&quot;: &quot;get&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 36,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
             &quot;line&quot;: 41,
             &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 93,
             &quot;function&quot;: &quot;unwrapIfClosure&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 37,
             &quot;function&quot;: &quot;callBoundMethod&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
             &quot;line&quot;: 651,
             &quot;function&quot;: &quot;call&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
             &quot;line&quot;: 139,
             &quot;function&quot;: &quot;call&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Command/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Command/Command.php&quot;,
             &quot;line&quot;: 308,
             &quot;function&quot;: &quot;execute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
             &quot;line&quot;: 124,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 1002,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 299,
             &quot;function&quot;: &quot;doRunCommand&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 171,
             &quot;function&quot;: &quot;doRun&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
             &quot;line&quot;: 102,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
             &quot;line&quot;: 129,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/artisan&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/artisan&quot;,
             &quot;line&quot;: 37,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
@@ -1299,7 +1299,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-application_services--id-"
-               value="ut"
+               value="in"
                data-component="url" hidden>
     <br>
 <p>The id of the Application Service.</p>
@@ -1320,20 +1320,20 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "https://lucid.test/api/application_services/aut" \
+    "http://lucid-starter.test/api/application_services/id" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"active\": false,
-    \"description\": \"non\"
+    \"description\": \"et\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://lucid.test/api/application_services/aut"
+    "http://lucid-starter.test/api/application_services/id"
 );
 
 const headers = {
@@ -1344,7 +1344,7 @@ const headers = {
 
 let body = {
     "active": false,
-    "description": "non"
+    "description": "et"
 };
 
 fetch(url, {
@@ -1414,7 +1414,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTapi-application_services--id-"
-               value="aut"
+               value="id"
                data-component="url" hidden>
     <br>
 <p>The id of the Application Service.</p>
@@ -1446,7 +1446,7 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="PUTapi-application_services--id-"
-               value="non"
+               value="et"
                data-component="body" hidden>
     <br>
 <p>optional The description of the Application Service.</p>
@@ -1471,7 +1471,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://lucid.test/api/authorization/roles" \
+    --get "http://lucid-starter.test/api/authorization/roles" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1479,7 +1479,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://lucid.test/api/authorization/roles"
+    "http://lucid-starter.test/api/authorization/roles"
 );
 
 const headers = {
@@ -1514,410 +1514,410 @@ access-control-allow-origin: *
 <code class="language-json">{
     &quot;message&quot;: &quot;User is not logged in.&quot;,
     &quot;exception&quot;: &quot;Spatie\\Permission\\Exceptions\\UnauthorizedException&quot;,
-    &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/spatie/laravel-permission/src/Exceptions/UnauthorizedException.php&quot;,
+    &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/spatie/laravel-permission/src/Exceptions/UnauthorizedException.php&quot;,
     &quot;line&quot;: 60,
     &quot;trace&quot;: [
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/spatie/laravel-permission/src/Middlewares/PermissionMiddleware.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/spatie/laravel-permission/src/Middlewares/PermissionMiddleware.php&quot;,
             &quot;line&quot;: 15,
             &quot;function&quot;: &quot;notLoggedIn&quot;,
             &quot;class&quot;: &quot;Spatie\\Permission\\Exceptions\\UnauthorizedException&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Spatie\\Permission\\Middlewares\\PermissionMiddleware&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
             &quot;line&quot;: 50,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\SubstituteBindings&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 126,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 102,
             &quot;function&quot;: &quot;handleRequest&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 54,
             &quot;function&quot;: &quot;handleRequestUsingNamedLimiter&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 726,
             &quot;function&quot;: &quot;then&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 703,
             &quot;function&quot;: &quot;runRouteWithinStack&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 667,
             &quot;function&quot;: &quot;runRoute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 656,
             &quot;function&quot;: &quot;dispatchToRoute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 167,
             &quot;function&quot;: &quot;dispatch&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 141,
             &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
             &quot;line&quot;: 21,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
             &quot;line&quot;: 31,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
             &quot;line&quot;: 21,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
             &quot;line&quot;: 40,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
             &quot;line&quot;: 27,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
             &quot;line&quot;: 86,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
             &quot;line&quot;: 62,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
             &quot;line&quot;: 39,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 142,
             &quot;function&quot;: &quot;then&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 111,
             &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 299,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 287,
             &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 89,
             &quot;function&quot;: &quot;makeApiCall&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 45,
             &quot;function&quot;: &quot;makeResponseCall&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 35,
             &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 222,
             &quot;function&quot;: &quot;__invoke&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 179,
             &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;fetchResponses&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 123,
             &quot;function&quot;: &quot;processRoute&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 80,
             &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 56,
             &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
             &quot;line&quot;: 55,
             &quot;function&quot;: &quot;get&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 36,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
             &quot;line&quot;: 41,
             &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 93,
             &quot;function&quot;: &quot;unwrapIfClosure&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 37,
             &quot;function&quot;: &quot;callBoundMethod&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
             &quot;line&quot;: 651,
             &quot;function&quot;: &quot;call&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
             &quot;line&quot;: 139,
             &quot;function&quot;: &quot;call&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Command/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Command/Command.php&quot;,
             &quot;line&quot;: 308,
             &quot;function&quot;: &quot;execute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
             &quot;line&quot;: 124,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 1002,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 299,
             &quot;function&quot;: &quot;doRunCommand&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 171,
             &quot;function&quot;: &quot;doRun&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
             &quot;line&quot;: 102,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
             &quot;line&quot;: 129,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/artisan&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/artisan&quot;,
             &quot;line&quot;: 37,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
@@ -1990,7 +1990,7 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://lucid.test/api/authorization/permissions" \
+    --get "http://lucid-starter.test/api/authorization/permissions" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1998,7 +1998,7 @@ access-control-allow-origin: *
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://lucid.test/api/authorization/permissions"
+    "http://lucid-starter.test/api/authorization/permissions"
 );
 
 const headers = {
@@ -2033,410 +2033,410 @@ access-control-allow-origin: *
 <code class="language-json">{
     &quot;message&quot;: &quot;User is not logged in.&quot;,
     &quot;exception&quot;: &quot;Spatie\\Permission\\Exceptions\\UnauthorizedException&quot;,
-    &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/spatie/laravel-permission/src/Exceptions/UnauthorizedException.php&quot;,
+    &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/spatie/laravel-permission/src/Exceptions/UnauthorizedException.php&quot;,
     &quot;line&quot;: 60,
     &quot;trace&quot;: [
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/spatie/laravel-permission/src/Middlewares/PermissionMiddleware.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/spatie/laravel-permission/src/Middlewares/PermissionMiddleware.php&quot;,
             &quot;line&quot;: 15,
             &quot;function&quot;: &quot;notLoggedIn&quot;,
             &quot;class&quot;: &quot;Spatie\\Permission\\Exceptions\\UnauthorizedException&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Spatie\\Permission\\Middlewares\\PermissionMiddleware&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
             &quot;line&quot;: 50,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\SubstituteBindings&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 126,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 102,
             &quot;function&quot;: &quot;handleRequest&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
             &quot;line&quot;: 54,
             &quot;function&quot;: &quot;handleRequestUsingNamedLimiter&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 726,
             &quot;function&quot;: &quot;then&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 703,
             &quot;function&quot;: &quot;runRouteWithinStack&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 667,
             &quot;function&quot;: &quot;runRoute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
             &quot;line&quot;: 656,
             &quot;function&quot;: &quot;dispatchToRoute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 167,
             &quot;function&quot;: &quot;dispatch&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 141,
             &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
             &quot;line&quot;: 21,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
             &quot;line&quot;: 31,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
             &quot;line&quot;: 21,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
             &quot;line&quot;: 40,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
             &quot;line&quot;: 27,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
             &quot;line&quot;: 86,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
             &quot;line&quot;: 62,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
             &quot;line&quot;: 39,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 142,
             &quot;function&quot;: &quot;then&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
             &quot;line&quot;: 111,
             &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 299,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 287,
             &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 89,
             &quot;function&quot;: &quot;makeApiCall&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 45,
             &quot;function&quot;: &quot;makeResponseCall&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
             &quot;line&quot;: 35,
             &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 222,
             &quot;function&quot;: &quot;__invoke&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 179,
             &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;fetchResponses&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 123,
             &quot;function&quot;: &quot;processRoute&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 80,
             &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 56,
             &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
             &quot;line&quot;: 55,
             &quot;function&quot;: &quot;get&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 36,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
             &quot;line&quot;: 41,
             &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 93,
             &quot;function&quot;: &quot;unwrapIfClosure&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
             &quot;line&quot;: 37,
             &quot;function&quot;: &quot;callBoundMethod&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
             &quot;line&quot;: 651,
             &quot;function&quot;: &quot;call&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
             &quot;line&quot;: 139,
             &quot;function&quot;: &quot;call&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Command/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Command/Command.php&quot;,
             &quot;line&quot;: 308,
             &quot;function&quot;: &quot;execute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
             &quot;line&quot;: 124,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 1002,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 299,
             &quot;function&quot;: &quot;doRunCommand&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/symfony/console/Application.php&quot;,
             &quot;line&quot;: 171,
             &quot;function&quot;: &quot;doRun&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
             &quot;line&quot;: 102,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
             &quot;line&quot;: 129,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/home/thixpin/projects/nexlabs/lucid/artisan&quot;,
+            &quot;file&quot;: &quot;/Users/william/Desktop/nexlabs/lucid-starter/artisan&quot;,
             &quot;line&quot;: 37,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,

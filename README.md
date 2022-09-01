@@ -7,7 +7,7 @@ This stater kit is based on lucid architecture (**[monolith](https://docs.lucida
 - **[Lucid Architecture](https://lucidarch.dev/)**
 
 ### REQUIREMENTS
-- **[PHP](https://www.php.net/)** 8.0+
+- **[PHP](https://www.php.net/)** 8.1^
 
 ### INSTALLATION
 ```shell
