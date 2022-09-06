@@ -2,7 +2,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
@@ -15,6 +18,7 @@
         "spatie/laravel-permission": "^5.5"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.9.1",
         "knuckleswtf/scribe": "^3.36",
         "laravel/pint": "^1.0",
@@ -30,7 +34,9 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "classmap": ["app/Helpers/"]
+        "classmap": [
+            "app/Helpers/"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -56,7 +62,8 @@
         "laravel": {
             "dont-discover": [
                 "laravel/passport",
-                "laravel/telescope"
+                "laravel/telescope",
+                "barryvdh/laravel-ide-helper"
             ]
         }
     },
