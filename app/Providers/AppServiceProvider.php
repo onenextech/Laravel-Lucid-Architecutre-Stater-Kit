@@ -9,7 +9,6 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-
     public function register()
     {
         $this->registerLucidApplicationProviders();
@@ -17,12 +16,10 @@ class AppServiceProvider extends ServiceProvider
         $this->configureDevelopmentPackages();
     }
 
-
     public function boot()
     {
         $this->registerMacros();
     }
-
 
     private function registerLucidApplicationProviders()
     {
@@ -30,11 +27,10 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(ApplicationServiceServiceProvider::class);
         } else {
             collect(config('core.lucid_application_providers'))
-                ->map(fn($provider) => $provider['provider'])
-                ->each(fn($provider) => $this->app->register($provider));
+                ->map(fn ($provider) => $provider['provider'])
+                ->each(fn ($provider) => $this->app->register($provider));
         }
     }
-
 
     private function configureDevelopmentPackages()
     {
@@ -45,7 +41,6 @@ class AppServiceProvider extends ServiceProvider
         }
     }
 
-
     private function configurePassport()
     {
         //Passport::tokensExpireIn(now()->addDays(15));
@@ -53,10 +48,9 @@ class AppServiceProvider extends ServiceProvider
         //Passport::personalAccessTokensExpireIn(now()->addMonths(6));
     }
 
-
     private function registerMacros()
     {
-        Blueprint::macro('snowflakeId', fn($column) => $this->unsignedBigInteger($column));
-        Blueprint::macro('snowflakeIdAndPrimary', fn($column) => $this->snowflakeId($column)->primary());
+        Blueprint::macro('snowflakeId', fn ($column) => $this->unsignedBigInteger($column));
+        Blueprint::macro('snowflakeIdAndPrimary', fn ($column) => $this->snowflakeId($column)->primary());
     }
 }
