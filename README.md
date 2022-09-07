@@ -24,14 +24,19 @@ php artisan db:seed --class=ApplicationServiceSeeder
 php artisan passport:install
 ```
 
-To make it permanent, add it to your` shell profile (~/.bash_profile, ~/.bashrc, ~/.zshrc) and you will be able to simply call lucid from the application’s root directory.
 
+Add the following line to your shell profile (~/.bash_profile, ~/.bashrc, ~/.zshrc), lucid & pint command will be usable in your application.
 ```shell
 export PATH="./vendor/bin:$PATH"
 ```
+(~/.bash_profile, ~/.bashrc, ~/.zshrc)
 
-#####Linting
+###Lucid
+```shell
+luicd ...
+```
 
+###Linting
 ```shell
 pint
 ```
