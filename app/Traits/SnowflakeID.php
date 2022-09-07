@@ -3,7 +3,6 @@
 namespace App\Traits;
 
 use App\Helpers\Snowflake;
-use Illuminate\Support\Str;
 
 trait SnowflakeID
 {

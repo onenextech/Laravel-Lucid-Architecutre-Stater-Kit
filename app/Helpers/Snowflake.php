@@ -76,11 +76,13 @@ class Snowflake
     {
         if ($this->lastTimestamp === $currentTime) {
             $this->sequence = $this->sequence + 1;
+
             return $this->sequence;
         }
 
         $this->sequence = mt_rand(0, $max);
         $this->lastTimestamp = $currentTime;
+
         return $this->sequence;
     }
 
@@ -98,6 +100,7 @@ class Snowflake
         }
 
         $this->lastTimestamp = $currentTime;
+
         return $this->toSnowflakeId($currentTime - $this->epoch, $sequenceId);
     }
 
@@ -126,6 +129,7 @@ class Snowflake
         }
 
         $this->lastTimestamp = $currentTime;
+
         return $this->toShortflakeId($currentTime - $this->epoch, $sequenceId);
     }
 
