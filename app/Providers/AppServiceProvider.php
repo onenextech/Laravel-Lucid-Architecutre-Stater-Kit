@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->registerMacros();
+        $this->registerBlueprintMacros();
     }
 
     private function registerLucidApplicationProviders()
@@ -48,9 +48,19 @@ class AppServiceProvider extends ServiceProvider
         //Passport::personalAccessTokensExpireIn(now()->addMonths(6));
     }
 
-    private function registerMacros()
+    private function registerBlueprintMacros()
     {
-        Blueprint::macro('snowflakeId', fn ($column) => $this->unsignedBigInteger($column));
-        Blueprint::macro('snowflakeIdAndPrimary', fn ($column) => $this->snowflakeId($column)->primary());
+        Blueprint::macro('snowflakeId', fn ($column = 'id') => $this->unsignedBigInteger($column));
+        Blueprint::macro('snowflakeIdAndPrimary', fn ($column = 'id') => $this->snowflakeId($column)->primary());
+
+        Blueprint::macro('auditColumns', function () {
+            $this->snowflakeId('created_by')->nullable();
+            $this->snowflakeId('updated_by')->nullable();
+            $this->snowflakeId('deleted_by')->nullable();
+            $this->timestamps();
+            $this->softDeletes();
+
+            return $this;
+        });
     }
 }

@@ -28,14 +28,4 @@ trait SnowflakeID
     {
         return false;
     }
-
-    /**
-     * Get the auto-incrementing key type.
-     *
-     * @return string
-     */
-    public function getKeyType()
-    {
-        return 'string';
-    }
 }
