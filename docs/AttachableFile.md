@@ -31,27 +31,25 @@ use App\Data\Models\File;
 use App\Data\Models\User;
 
 $user = User::find(1);
-$file = new File();
 
 // You can Use one of the following methods to attach the file to model
 // --------------------------------------------------------------------
 
 // Create file from Url
-$file->fromUrl('https://book.test/themes/demo/assets/images/homepage-header-image.png');
+$avatar = new File();
+$avatar->fromUrl('https://example.com/avatar.png');
 
 // or Create file from UploadedFile
-$file->fromPost($uploadedFile);
-
-// or Create file from $filePath
-$file->fromFile($filePath, $filename = null);
-
+$cv = new File();
+$uploadedFile = $request->file('resume');
+$cv->fromPost($uploadedFile);
 // ----------------------------------------------------------------------
 
 // set the file as avatar
-$user->avatar = $file;
+$user->avatar = $avatar;
 
 // or set the files as photos
-$user->photos = [$file1, $file2, $file3];
+$user->documents = [$file, $cv];
 
 $user->save();
 
