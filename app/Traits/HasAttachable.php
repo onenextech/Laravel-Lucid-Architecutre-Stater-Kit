@@ -9,8 +9,16 @@ trait HasAttachable
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->attachOne = $this->attachOne ?? [];
-        $this->attachMany = $this->attachMany ?? [];
+    }
+
+    public function getAttachOne()
+    {
+        return isset($this->attachOne) ? $this->attachOne : [];
+    }
+
+    public function getAttachMany()
+    {
+        return isset($this->attachMany) ? $this->attachMany : [];
     }
 
     public function attachables()
@@ -20,9 +28,9 @@ trait HasAttachable
 
     public function getAttribute($key)
     {
-        if (array_key_exists($key, $this->attachOne)) {
+        if (array_key_exists($key, $this->getAttachOne())) {
             return $this->getAttachable($key);
-        } elseif (array_key_exists($key, $this->attachMany)) {
+        } elseif (array_key_exists($key, $this->getAttachMany())) {
             return $this->getAttachables($key);
         }
 
@@ -41,9 +49,9 @@ trait HasAttachable
 
     public function setAttribute($key, $value)
     {
-        if (array_key_exists($key, $this->attachOne)) {
+        if (array_key_exists($key, $this->getAttachOne())) {
             return $this->setAttachable($key, $value);
-        } elseif (array_key_exists($key, $this->attachMany)) {
+        } elseif (array_key_exists($key, $this->getAttachMany())) {
             return $this->setAttachables($key, $value);
         }
         parent::setAttribute($key, $value);

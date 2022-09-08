@@ -68,10 +68,10 @@ $avatar = $user->avatar;
 // Get the file url
 $avatar->url;
 
-// Get the file url
+// Get the file path
 $avatar->path;
 
-// Get the file name
+// Get the original file name
 $avatar->name;
 
 // Get the file extension
@@ -83,11 +83,17 @@ $avatar->mime_type;
 // Get the file size
 $avatar->size;
 
-// Create a thumbnail of the file and get the url
+// Create a thumbnail of the file and get the path
 $avatar->getThumb($width, $height);
 
 // Create a thumbnail of the file with custimze options and get the url
 $avatar->getThumb($width, $height, $options);
+
+// Create a thumbnail of the file and get the url
+$avatar->getThumbUrl($width, $height, $options);
+
+// Create a thumbnail of the file with custimze options and get the url
+$avatar->getThumbUrl($width, $height, $options);
 
 /**
  * getThumb method

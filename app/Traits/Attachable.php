@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Helpers\Resizer;
 use Exception;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File as FileBase;
 use Illuminate\Support\Facades\Http;
@@ -154,7 +155,12 @@ trait Attachable
      */
     public function getUrlAttribute()
     {
-        return $this->getPath();
+        if ($this->isLocalStorage()) {
+            return asset('storage/app'.$this->getPath());
+        } else {
+            return $this->getDisk()->url($this->getPath());
+        }
+        // return url('storage/app' . $this->getPath());
     }
 
     /**
@@ -451,6 +457,16 @@ trait Attachable
         }
 
         return $thumbPublic;
+    }
+
+    public function getThumbUrl($width, $height, $options = [])
+    {
+        $path = $this->getThumb($width, $height, $options);
+        if ($this->isLocalStorage()) {
+            return asset($path);
+        } else {
+            return $this->getDisk()->url($path);
+        }
     }
 
     /**
@@ -774,7 +790,9 @@ trait Attachable
      */
     protected function copyLocalToStorage($localPath, $storagePath)
     {
-        return $this->getDisk()->put($storagePath, FileBase::get($localPath), $this->isPublic() ? 'public' : null);
+        return $this->isPublic()
+        ? $this->getDisk()->put($storagePath, FileBase::get($localPath))
+        : $this->getDisk()->put($storagePath, FileBase::get($localPath), 'public');
     }
 
     //
@@ -786,11 +804,13 @@ trait Attachable
      */
     public function getStorageDirectory()
     {
-        if ($this->isPublic()) {
-            return '/public/';
+        $root = '/';
+        $environment = App::environment();
+        if (App::environment() != 'production') {
+            $root .= $environment;
         }
 
-        return '/protected/';
+        return $this->isPublic() ? $root.'/public/' : $root.'/storage/';
     }
 
     /**

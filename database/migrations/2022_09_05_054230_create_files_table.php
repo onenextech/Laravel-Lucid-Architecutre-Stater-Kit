@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('files', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
+            $table->snowflakeId('id')->primary();
             $table->string('disk_name');
             $table->string('file_name');
             $table->integer('file_size');
             $table->string('content_type');
             $table->string('title')->nullable();
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('attachable_id');
+            $table->snowflakeId('attachable_id');
             $table->string('attachable_type')->nullable();
             $table->string('field')->nullable()->index();
             $table->boolean('is_public')->default(true);
