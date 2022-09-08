@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('files', function (Blueprint $table) {
-            $table->snowflakeId('id')->primary();
+            $table->snowflakeIdAndPrimary();
             $table->string('disk_name');
             $table->string('file_name');
             $table->integer('file_size');
