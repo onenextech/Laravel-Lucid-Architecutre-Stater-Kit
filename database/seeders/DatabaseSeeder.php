@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        if (config('core.lucid_application_providers')) {
+        /*if (config('core.lucid_application_providers')) {
             $this->call(ApplicationServiceSeeder::class);
-        }
+        }*/
 
         $this->call([
             PermissionSeeder::class,
