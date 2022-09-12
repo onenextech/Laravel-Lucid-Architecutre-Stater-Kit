@@ -70,8 +70,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     private function registerCollectionMacros() {
-        Collection::macro('enum', function ()  {
-            return Enum::make($this)->enumToCollection();
-        });
+        Collection::macro('enum', fn () => Enum::make($this));
+        Collection::macro('enumToCollection', fn () => Enum::make($this)->collection());
     }
 }
