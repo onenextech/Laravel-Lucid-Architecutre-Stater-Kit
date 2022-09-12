@@ -6,6 +6,8 @@ use App\Services\ApplicationService\Providers\ApplicationServiceServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Telescope\Telescope;
+use Laravel\Telescope\TelescopeServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
     private function configureDevelopmentPackages()
     {
         if ($this->app->environment(['local', 'development'])) {
-            $this->app->register(TelescopeServiceProvider::class);
+            Telescope::night();
             $this->app->register(TelescopeServiceProvider::class);
             $this->app->register(IdeHelperServiceProvider::class);
         }

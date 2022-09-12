@@ -9,9 +9,8 @@ trait SnowflakeID
     /**
      * Boot function from Laravel.
      */
-    protected static function boot()
+    protected static function bootSnowflakeId()
     {
-        parent::boot();
         static::creating(function ($model) {
             if (empty($model->{$model->getKeyName()})) {
                 $model->{$model->getKeyName()} = (new Snowflake())->next();

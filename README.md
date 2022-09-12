@@ -1,5 +1,5 @@
 
-###LARAVEL LUCID ARCHITECTURE STATER KIT
+LARAVEL LUCID ARCHITECTURE STATER KIT
 
 ### ABOUT STATER KIT
 This stater kit is based on lucid architecture (**[monolith](https://docs.lucidarch.dev/micro-vs-monolith/#monolith)**) for laravel framework.
