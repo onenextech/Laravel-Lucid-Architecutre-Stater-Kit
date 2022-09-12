@@ -15,7 +15,7 @@ class Enum
 
     public static function make($enum)
     {
-        return new Enum($enum[0]);
+        return new Enum($enum);
     }
 
     public function names()
