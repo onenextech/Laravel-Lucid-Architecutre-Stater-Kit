@@ -4,6 +4,7 @@
 /public/storage
 /public/api-docs
 /public/vendor/scribe
+/resources/views/scribe
 /storage/*.key
 /vendor
 .env
