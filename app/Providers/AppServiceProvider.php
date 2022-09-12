@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Helpers\Enum;
 use App\Services\ApplicationService\Providers\ApplicationServiceServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Telescope\Telescope;
 use Laravel\Telescope\TelescopeServiceProvider;
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerBlueprintMacros();
+        $this->registerCollectionMacros();
     }
 
     private function registerLucidApplicationProviders()
@@ -63,6 +66,12 @@ class AppServiceProvider extends ServiceProvider
             $this->softDeletes();
 
             return $this;
+        });
+    }
+
+    private function registerCollectionMacros() {
+        Collection::macro('enum', function ()  {
+            return Enum::make($this)->enumToCollection();
         });
     }
 }
