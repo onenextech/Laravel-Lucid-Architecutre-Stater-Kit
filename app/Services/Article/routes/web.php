@@ -11,13 +11,11 @@
 |
 */
 
-Route::group(['prefix' => 'article'], function() {
-
+Route::group(['prefix' => 'article'], function () {
     // The controllers live in src/Services/Article/Http/Controllers
     // Route::get('/', 'UserController@index');
 
-    Route::get('/', function() {
+    Route::get('/', function () {
         return view('article::welcome');
     });
-
 });

@@ -24,15 +24,15 @@ class CommentServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom([
-            realpath(__DIR__ . '/../database/migrations')
+            realpath(__DIR__.'/../database/migrations'),
         ]);
     }
 
     /**
-    * Register the Comment service provider.
-    *
-    * @return void
-    */
+     * Register the Comment service provider.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);

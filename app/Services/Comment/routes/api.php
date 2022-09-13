@@ -12,16 +12,14 @@
 */
 
 // Prefix: /api/comment
-Route::group(['prefix' => 'comment'], function() {
-
+Route::group(['prefix' => 'comment'], function () {
     // Controllers live in src/Services/Comment/Http/Controllers
 
-    Route::get('/', function() {
+    Route::get('/', function () {
         return response()->json(['path' => '/api/comment']);
     });
 
     Route::middleware('auth:api')->get('/user', function (Request $request) {
         return $request->user();
     });
-
 });

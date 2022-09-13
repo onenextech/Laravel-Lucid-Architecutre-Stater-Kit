@@ -24,15 +24,15 @@ class ArticleServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom([
-            realpath(__DIR__ . '/../database/migrations')
+            realpath(__DIR__.'/../database/migrations'),
         ]);
     }
 
     /**
-    * Register the Article service provider.
-    *
-    * @return void
-    */
+     * Register the Article service provider.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);

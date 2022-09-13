@@ -11,13 +11,11 @@
 |
 */
 
-Route::group(['prefix' => 'comment'], function() {
-
+Route::group(['prefix' => 'comment'], function () {
     // The controllers live in src/Services/Comment/Http/Controllers
     // Route::get('/', 'UserController@index');
 
-    Route::get('/', function() {
+    Route::get('/', function () {
         return view('comment::welcome');
     });
-
 });

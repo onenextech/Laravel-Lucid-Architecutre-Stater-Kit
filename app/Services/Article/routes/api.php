@@ -12,16 +12,14 @@
 */
 
 // Prefix: /api/article
-Route::group(['prefix' => 'article'], function() {
-
+Route::group(['prefix' => 'article'], function () {
     // Controllers live in src/Services/Article/Http/Controllers
 
-    Route::get('/', function() {
+    Route::get('/', function () {
         return response()->json(['path' => '/api/article']);
     });
 
     Route::middleware('auth:api')->get('/user', function (Request $request) {
         return $request->user();
     });
-
 });
