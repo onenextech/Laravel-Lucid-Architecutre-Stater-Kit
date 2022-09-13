@@ -34,6 +34,12 @@ return [
             'force_required' => true,
             'active' => true,
         ],
+        [
+            'provider' => \App\Services\Comment\Providers\CommentServiceProvider::class,
+            'description' => 'Blog Comment Service',
+            'force_required' => true,
+            'active' => true,
+        ],
 
     ],
 
