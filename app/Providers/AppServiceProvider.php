@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
 
     private function configureDevelopmentPackages()
     {
-        if ($this->app->environment(['local', 'development'])) {
+        if (! $this->app->environment('production')) {
             Telescope::night();
             $this->app->register(TelescopeServiceProvider::class);
             $this->app->register(IdeHelperServiceProvider::class);
