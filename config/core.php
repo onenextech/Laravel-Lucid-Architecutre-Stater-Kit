@@ -28,6 +28,12 @@ return [
             'force_required' => true,
             'active' => true,
         ],
+        [
+            'provider' => \App\Services\Article\Providers\ArticleServiceProvider::class,
+            'description' => 'Blog Article Service',
+            'force_required' => true,
+            'active' => true,
+        ],
 
     ],
 
