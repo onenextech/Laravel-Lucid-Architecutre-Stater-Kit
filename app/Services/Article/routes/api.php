@@ -1,5 +1,9 @@
 <?php
 
+use App\Services\Article\Http\Controllers\ArticleCategoryController;
+use App\Services\Article\Http\Controllers\ArticleController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Service - API Routes
@@ -11,15 +15,12 @@
 |
 */
 
-// Prefix: /api/article
-Route::group(['prefix' => 'article'], function () {
+// Prefix: /api/articles
+Route::group(['prefix' => 'articles'], function () {
     // Controllers live in src/Services/Article/Http/Controllers
+    Route::get('/categories', [ArticleCategoryController::class, 'index']);
+    Route::get('/categories/{articleCategoryId}', [ArticleCategoryController::class, 'show']);
 
-    Route::get('/', function () {
-        return response()->json(['path' => '/api/article']);
-    });
-
-    Route::middleware('auth:api')->get('/user', function (Request $request) {
-        return $request->user();
-    });
+    Route::get('/', [ArticleController::class, 'index']);
+    Route::get('/{articleId}', [ArticleController::class, 'show']);
 });

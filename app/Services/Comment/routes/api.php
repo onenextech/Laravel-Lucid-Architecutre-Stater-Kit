@@ -1,5 +1,8 @@
 <?php
 
+use App\Services\Comment\Http\Controllers\CommentController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Service - API Routes
@@ -12,14 +15,8 @@
 */
 
 // Prefix: /api/comment
-Route::group(['prefix' => 'comment'], function () {
+Route::group(['prefix' => 'comments'], function () {
     // Controllers live in src/Services/Comment/Http/Controllers
 
-    Route::get('/', function () {
-        return response()->json(['path' => '/api/comment']);
-    });
-
-    Route::middleware('auth:api')->get('/user', function (Request $request) {
-        return $request->user();
-    });
+    Route::post('/', [CommentController::class, 'create']);
 });
