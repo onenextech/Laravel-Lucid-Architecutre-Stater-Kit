@@ -12,7 +12,7 @@ class Comment extends Model
 {
     use HasFactory, HasPermissions, SoftDeletes, BasicAudit;
 
-    public $fillable = ['name', 'email', 'content'];
+    public $fillable = ['name', 'email', 'content', 'article_id'];
 
     public function article()
     {
