@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(ApplicationServiceServiceProvider::class);
         } else {
             collect(config('core.lucid_application_providers'))
+                ->filter(fn ($provider) => $provider['active'])
                 ->map(fn ($provider) => $provider['provider'])
                 ->each(fn ($provider) => $this->app->register($provider));
         }
