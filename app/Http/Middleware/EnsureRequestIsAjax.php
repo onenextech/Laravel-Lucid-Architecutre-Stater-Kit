@@ -19,7 +19,7 @@ class EnsureRequestIsAjax
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Str::contains($request->getPathInfo(), 'api') && ! $request->ajax()) {
+        if (Str::contains($request->getPathInfo(), '/api/') && ! $request->ajax()) {
             Log::warning('Request cancelled by EnsureRequestIsAjax middleware');
 
             return JsonResponder::validationError('No XMLHttpRequest is found in X-Requested-With header', [
