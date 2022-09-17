@@ -82,7 +82,6 @@ class Handler extends ExceptionHandler
 
             default:
                 info($exception);
-
                 return JsonResponder::internalServerError(data: $this->getInternalServerErrorDetail($exception));
         }
     }
