@@ -1,0 +1,94 @@
+service: codetest
+
+provider:
+  name: aws
+  # The AWS region in which to deploy (us-east-1 is the default)
+  region: ap-southeast-1
+  # Attach VPC to Lambda function
+  stage: ${opt:stage, 'dev'}
+  vpc:
+    securityGroupIds:
+      - sg-0ff4b08636c96a9c8
+    subnetIds:
+      - subnet-0e01aa1129f532af3
+      - subnet-066b1b4cfb7056847
+  #  vpcId: vpc-0a145ff53fae51c6f
+  # Environment variables
+  environment:
+    APP_ENV: production # Or use ${sls:stage} if you want the environment to match the stage
+  #   PASSPORT_PRIVATE_KEY: bref-ssm:/onenex/codetest/${sls:stage}/oauth-private.key
+  #   PASSPORT_PUBLIC_KEY: bref-ssm:/onenex/codetest/${sls:stage}/oauth-public.key
+  # iam:
+  #   role:
+  #     statements:
+  #       # Allow our Lambda functions to retrieve the parameter from SSM
+  #       - Effect: Allow
+  #         Action:
+  #           - ssm:Get*
+  #           - ssm:List*
+  #           - ssm:Describe*
+  #         Resource: "arn:aws:ssm:${self:provider.region}:${aws:accountId}:parameter/onenex/codetest/${self:provider.stage}/*"
+
+package:
+  # Files and directories to exclude from deployment
+  patterns:
+    - "!node_modules/**"
+    - "!public/storage"
+    - "!resources/assets/**"
+    - "!storage/**"
+    - "!tests/**"
+
+functions:
+  # This function runs the Laravel website/API
+  api:
+    handler: public/index.php
+    runtime: php-81-fpm
+    timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
+    events:
+      - httpApi: "*"
+
+  # This function lets us run artisan commands in Lambda
+  # artisan:
+  #     handler: artisan
+  #     runtime: php-81-console
+  #     timeout: 720 # in seconds
+  #     # Uncomment to also run the scheduler every minute
+  #     #events:
+  #     #    - schedule:
+  #     #          rate: rate(1 minute)
+  #     #          input: '"schedule:run"'
+
+constructs:
+  website:
+    type: server-side-website
+    domain: codetest.onenex.dev
+    certificate: arn:aws:acm:us-east-1:${aws:accountId}:certificate/e51afe13-9384-4491-8bc9-356730865e64
+    assets:
+      "/favicon.ico": public/favicon.ico
+      "/robots.txt": public/robots.txt
+      "/vendor/*": public/vendor
+      "/assets/*": public/build/assets
+      "/api-docs/files/*": storage/app/scribe/
+      
+
+plugins:
+  - ./vendor/bref/bref
+  - serverless-lift
+  - serverless-scriptable-plugin
+custom:
+  scriptable:
+    hooks:
+      before:package:createDeploymentArtifacts:
+        - php artisan scribe:generate
+        - rm -f index.blade.php
+        - cat resources/views/scribe/index.blade.php | sed 's/{{ route("scribe.postman") }}/api-docs\/files\/collection.json/g'  > scribe.index.blade.php
+        - mv resources/views/scribe/index.blade.php resources/views/scribe/index.blade-old.php
+        - cat scribe.index.blade.php | sed 's/{{ route("scribe.openapi") }}/api-docs\/files\/openapi.yaml/g'  > resources/views/scribe/index.blade.php
+        - rm -f scribe.index.blade.php
+        - mv .env .env.local
+        - cp .env.${opt:stage, 'dev'} .env
+      after:package:createDeploymentArtifacts:
+        - rm .env
+        - mv .env.local .env
+        - rm -f resources/views/scribe/index.blade.php
+        - mv resources/views/scribe/index.blade-old.php resources/views/scribe/index.blade.php
