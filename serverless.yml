@@ -37,13 +37,20 @@ package:
     - "!resources/assets/**"
     - "!storage/**"
     - "!tests/**"
+    - "!.env.*"
+    - "!docs/**"
 
 functions:
   # This function runs the Laravel website/API
   api:
-    handler: public/index.php
-    runtime: php-81-fpm
+    # handler: public/index.php
+    # runtime: php-81-fpm
     timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
+    handler: Bref\LaravelBridge\Http\OctaneHandler
+    runtime: php-81
+    environment:
+      BREF_LOOP_MAX: 250
+      OCTANE_PERSIST_DATABASE_SESSIONS: 1
     events:
       - httpApi: "*"
 
@@ -69,7 +76,6 @@ constructs:
       "/vendor/*": public/vendor
       "/assets/*": public/build/assets
       "/api-docs/files/*": storage/app/scribe/
-      
 
 plugins:
   - ./vendor/bref/bref
