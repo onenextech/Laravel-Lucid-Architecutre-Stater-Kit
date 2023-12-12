@@ -82,8 +82,20 @@ class Handler extends ExceptionHandler
 
             default:
                 info($exception);
-
-                return JsonResponder::internalServerError();
+                return JsonResponder::internalServerError(data: $this->getInternalServerErrorDetail($exception));
         }
+    }
+
+    private function getInternalServerErrorDetail($exception): array
+    {
+        $data = [];
+        if (config('app.debug')) {
+            $data = [
+                'error_message' => $exception->getMessage(),
+                'trace' => $exception->getTraceAsString(),
+            ];
+        }
+
+        return $data;
     }
 }

@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 /.scribe
 /.serverless
+tests/Unit

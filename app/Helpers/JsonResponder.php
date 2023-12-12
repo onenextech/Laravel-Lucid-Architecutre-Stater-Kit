@@ -28,9 +28,9 @@ class JsonResponder
         return self::respond($message, 422, $data);
     }
 
-    public static function internalServerError($message = 'Internal Server Error'): \Illuminate\Http\JsonResponse
+    public static function internalServerError($message = 'Internal Server Error', $data = []): \Illuminate\Http\JsonResponse
     {
-        return self::respond($message, 500);
+        return self::respond($message, 500, $data);
     }
 
     public static function notFound($message = 'Not Found')
